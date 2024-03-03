@@ -1,16 +1,22 @@
-import { createClient } from "@liveblocks/client";
+import {
+  LiveList,
+  LiveMap,
+  LiveObject,
+  createClient,
+} from "@liveblocks/client";
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
+import { Layer } from "./types/canvas";
 
 const client = createClient({
-  publicApiKey: "pk_dev_JFDdn-SGtUrHqM0gOieD0SboH-59OakYS0fL3rYU4uM9aHKsHSSZ4zDj9Xhtw_B6",
+  throttle: 16,
+  authEndpoint: "/api/liveblocks-auth",
 });
 
 // Presence represents the properties that exist on every user in the Room
 // and that will automatically be kept in sync. Accessible through the
 // `user.presence` property. Must be JSON-serializable.
 type Presence = {
-  // cursor: { x: number, y: number } | null,
-  // ...
+  cursor: { x: number; y: number } | null;
 };
 
 // Optionally, Storage represents the shared document that persists in the
@@ -18,8 +24,8 @@ type Presence = {
 // LiveList, LiveMap, LiveObject instances, for which updates are
 // automatically persisted and synced to all connected clients.
 type Storage = {
-  // author: LiveObject<{ firstName: string, lastName: string }>,
-  // ...
+  layers: LiveMap<string, LiveObject<Layer>>;
+  layerIds: LiveList<string>;
 };
 
 // Optionally, UserMeta represents static/readonly metadata on each user, as
