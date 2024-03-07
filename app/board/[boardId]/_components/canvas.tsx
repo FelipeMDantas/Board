@@ -32,6 +32,7 @@ import { nanoid } from "nanoid";
 import { LiveObject } from "@liveblocks/client";
 import { LayerPreview } from "./layer-preview";
 import { SelectionBox } from "./selection-box";
+import { SelectionTools } from "./selection-tools";
 
 const MAX_LAYERS = 100;
 
@@ -126,6 +127,12 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     }
   }, []);
 
+  const startMultiSelection = useCallback((current: Point, origin: Point) => {
+    if (Math.abs(current.x - origin.x) + Math.abs(current.y - origin.y) > 5) {
+      setCanvasState({ mode: CanvasMode.SelectionNet, origin, current });
+    }
+  }, []);
+
   const resizeSelectedLayer = useMutation(
     ({ storage, self }, point: Point) => {
       if (canvasState.mode !== CanvasMode.Resizing) {
@@ -172,7 +179,9 @@ export const Canvas = ({ boardId }: CanvasProps) => {
       e.preventDefault();
       const current = pointerEventToCanvasPoint(e, camera);
 
-      if (canvasState.mode === CanvasMode.Translating) {
+      if (canvasState.mode === CanvasMode.Pressing) {
+        startMultiSelection(current, canvasState.origin);
+      } else if (canvasState.mode === CanvasMode.Translating) {
         translateSelectedLayers(current);
       } else if (canvasState.mode === CanvasMode.Resizing) {
         resizeSelectedLayer(current);
@@ -208,8 +217,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         canvasState.mode === CanvasMode.None ||
         canvasState.mode === CanvasMode.Pressing
       ) {
-        console.log("UNSELECT");
-
+        unselectedLayers();
         setCanvasState({ mode: CanvasMode.None });
       } else if (canvasState.mode === CanvasMode.Inserting) {
         insertLayer(canvasState.layerType, point);
@@ -219,7 +227,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
       history.resume();
     },
-    [camera, canvasState, history, insertLayer]
+    [camera, canvasState, history, insertLayer, unselectedLayers]
   );
 
   const selections = useOthersMapped((other) => other.presence.selection);
@@ -272,6 +280,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         undo={history.undo}
         redo={history.redo}
       />
+      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="h-[100vh] w-[100vw]"
         onWheel={onWheel}
