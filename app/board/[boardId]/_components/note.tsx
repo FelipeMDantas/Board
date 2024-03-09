@@ -1,4 +1,4 @@
-import { cn, colorToCss } from "@/lib/utils";
+import { cn, colorToCss, getContrastingTextColor } from "@/lib/utils";
 import { useMutation } from "@/liveblocks.config";
 import { NoteLayer } from "@/types/canvas";
 import { Kalam } from "next/font/google";
@@ -8,7 +8,7 @@ const font = Kalam({ subsets: ["latin"], weight: ["400"] });
 
 const calculateFontSize = (width: number, height: number) => {
   const maxFontSize = 96;
-  const scaleFactor = 0.5;
+  const scaleFactor = 0.15;
   const fontSizeBasedOnHeight = height * scaleFactor;
   const fontSizeBasedOnWidth = width * scaleFactor;
 
@@ -61,7 +61,7 @@ export const Note = ({
           font.className
         )}
         style={{
-          color: fill ? colorToCss(fill) : "#000",
+          color: fill ? getContrastingTextColor(fill) : "#000",
           fontSize: calculateFontSize(width, height),
         }}
       />
