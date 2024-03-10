@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Board
 
-## Getting Started
+## A collaborative drawing board or set thereof.
 
-First, run the development server:
+![Felipe|Board](https://img.shields.io/badge/FelipeMDantas-Board-white)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> This application provides regular and Google oAuth authentication and, in a nutshell, allows users to create, edit, favorite and manage drawing boards and associate them with organizations. In turn, these boards can be used by a group of invited users simultaneously, permitting real-time interaction.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Take a look at the page
 
-## Learn More
+<img src = gif/page_gif.gif>
 
-To learn more about Next.js, take a look at the following resources:
+### or... give it a try!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://board-umber-beta.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech
 
-## Deploy on Vercel
+A couple of technologies were employed in this project. Among them:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [NextJS] - a React framework for the Web
+- [TypeScript] - a strongly typed programming language that builds on JavaScript
+- [Clerk] - an user management platform
+- [Liveblocks] - provides toolkit to embed collaboration
+- [Convex] - a fullstack TypeScript development platform
+- [Clsx] - an utility for constructing className strings conditionally
+- [Radix UI] - an open source component library
+- [Shadcn] - a component library
+- [Date-fns] - provides a toolset for manipulating dates
+- [Lucide] - an icon package
+- [NanoID] - a unique string ID generator for JavaScript
+- [Perfect-Freehand] - allows drawing pressure-sensitive freehand lines
+- [Query String] - provides parse and stringify for URL query strings
+- [Sonner] - a toast component for React
+- [Zustand] - a React state-manager that facilitates data persistence through screens
+- [NPM] - a package manager
+- [Tailwind] - a utility-first CSS framework
+- [Prettier] - a code formatter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  [nextjs]: https://nextjs.org/
+  [typescript]: https://www.typescriptlang.org/
+  [clerk]: https://clerk.com/
+  [liveblocks]: https://liveblocks.io/
+  [convex]: https://www.convex.dev/
+  [clsx]: https://www.npmjs.com/package/clsx
+  [radix ui]: https://www.radix-ui.com/
+  [shadcn]: https://ui.shadcn.com/
+  [date-fns]: https://www.npmjs.com/package/date-fns
+  [lucide]: https://lucide.dev/
+  [nanoid]: https://github.com/ai/nanoid
+  [perfect-freehand]: https://github.com/steveruizok/perfect-freehand
+  [query string]: https://github.com/sindresorhus/query-string
+  [sonner]: https://sonner.emilkowal.ski/
+  [zustand]: https://github.com/pmndrs/zustand
+  [npm]: https://www.npmjs.com/
+  [tailwind]: https://tailwindcss.com/
+  [prettier]: https://prettier.io/
